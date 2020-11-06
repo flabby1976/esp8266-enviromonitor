@@ -4,6 +4,7 @@ import machine
 import time 
 import dht
 import ubinascii
+import ujson
 
 from captive_portal import CaptivePortal
 
@@ -20,9 +21,13 @@ print("\n\n****Starting")
 portal = CaptivePortal()
 portal.start()
 
+with open('secrets.json') as fp:
+    secrets = ujson.loads(fp.read())
+    # print(secrets)
+
 client_id = ubinascii.hexlify(machine.unique_id())
 client = MQTTClient(client_id=client_id, 
-                    server="io.adafruit.com", user="andrew1977", password="aio_ynCC15LVE80vwXMiOlrE7alFF8iX", port=1883) 
+                    server=secrets['mqtt']['host'], user=secrets['mqtt']['user'], password=secrets['mqtt']['pass'], port=1883) 
 client.connect()
 
 d = dht.DHT22(machine.Pin(14))
