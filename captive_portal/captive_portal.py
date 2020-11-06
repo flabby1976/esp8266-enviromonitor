@@ -4,9 +4,9 @@ import ubinascii as binascii
 import uselect as select
 import utime as time
 
-from captive_dns import DNSServer
-from captive_http import HTTPServer
-from credentials import Creds
+from .captive_dns import DNSServer
+from .captive_http import HTTPServer
+from .credentials import Creds
 
 
 class CaptivePortal:

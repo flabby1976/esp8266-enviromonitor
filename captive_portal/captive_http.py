@@ -4,12 +4,12 @@ import uselect as select
 import usocket as socket
 
 from collections import namedtuple
-from credentials import Creds
+from .credentials import Creds
 
 WriteConn = namedtuple("WriteConn", ["body", "buff", "buffmv", "write_range"])
 ReqInfo = namedtuple("ReqInfo", ["type", "path", "params", "host"])
 
-from server import Server
+from .server import Server
 
 import gc
 

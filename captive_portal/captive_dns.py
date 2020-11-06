@@ -1,7 +1,7 @@
 import usocket as socket
 import gc
 
-from server import Server
+from .server import Server
 
 
 class DNSQuery:

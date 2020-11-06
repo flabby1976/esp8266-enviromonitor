@@ -6,10 +6,10 @@ import dht
 import ubinascii
 import ujson
 
-from captive_portal import CaptivePortal
+from captive_portal.captive_portal import CaptivePortal
 
 def deep_sleep(msecs):
-  #configure RTC.ALARM0 to be able to wake the device
+  # configure RTC.ALARM0 to be able to wake the device
   rtc = machine.RTC()
   rtc.irq(trigger=rtc.ALARM0, wake=machine.DEEPSLEEP)
   # set RTC.ALARM0 to fire after Xmilliseconds, waking the device
@@ -23,7 +23,6 @@ portal.start()
 
 with open('secrets.json') as fp:
     secrets = ujson.loads(fp.read())
-    # print(secrets)
 
 client_id = ubinascii.hexlify(machine.unique_id())
 client = MQTTClient(client_id=client_id, 
